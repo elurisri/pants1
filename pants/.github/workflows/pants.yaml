@@ -3,7 +3,6 @@ name: Pants
 on:
   pull_request:
     branches: [ main ]
-
 jobs:
   build:
     name: Perform CI Checks
