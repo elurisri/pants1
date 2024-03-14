@@ -1,0 +1,89 @@
+[GLOBAL]
+pants_version = "2.16.0"
+backend_packages = [
+  "pants.backend.python",
+  "pants.backend.docker",
+  # run `pants py-constraints ::` to check the python version constraints.
+  "pants.backend.python.mixed_interpreter_constraints",
+  # formatters
+  "pants.backend.python.lint.black",
+  "pants.backend.python.lint.isort",
+  "pants.backend.python.lint.docformatter",
+  # linters
+  "pants.backend.python.lint.flake8",
+  "pants.backend.python.lint.pylint",
+  "pants.backend.python.lint.pydocstyle",
+]
+
+[source]
+# The Python source root is the repo root. See https://www.pantsbuild.org/docs/source-roots.
+root_patterns = ["/"]
+
+[python]
+# The default interpreter constraints for code in this repo. Individual targets can override
+#  this with the `interpreter_constraints` field. See
+#  https://www.pantsbuild.org/docs/python-interpreter-compatibility.
+
+# Modify this if you don't have Python 3.9 on your machine.
+# This can be a range, such as [">=3.8,<3.11"], but it's usually recommended to restrict
+# to a single minor version.
+interpreter_constraints = ["==3.10.*"]
+
+enable_resolves = true
+
+[anonymous-telemetry]
+# Pants can optionally send anonymized telemetry to the Pants project.
+enabled = false
+
+[test]
+use_coverage = true
+
+[coverage-py]
+report = [
+    "console",
+    "xml",
+    "html",
+]
+
+[python.resolves]
+# Run `pants generate-lockfiles` to generate locks.
+python-default  = "3rdparty/python/default.lock"
+black           = "3rdparty/fmt/black.lock"
+isort           = "3rdparty/fmt/isort.lock"
+docformatter    = "3rdparty/fmt/docformatter.lock"
+flake8          = "3rdparty/lint/flake8.lock"
+pylint          = "3rdparty/lint/pylint.lock"
+pydocstyle      = "3rdparty/lint/pydocstyle.lock"
+pytest          = "3rdparty/test/pytest.lock"
+
+[black]
+install_from_resolve = "black"
+requirements =["//3rdparty/fmt:black"]
+interpreter_constraints = ["==3.10.*"]
+
+[isort]
+install_from_resolve = "isort"
+requirements =["//3rdparty/fmt:isort"]
+interpreter_constraints = ["==3.10.*"]
+
+[docformatter]
+install_from_resolve = "docformatter"
+requirements =["//3rdparty/fmt:docformatter"]
+interpreter_constraints = ["==3.10.*"]
+
+[flake8]
+install_from_resolve = "flake8"
+requirements =["//3rdparty/lint:flake8"]
+
+[pylint]
+install_from_resolve = "pylint"
+requirements =["//3rdparty/lint:pylint"]
+
+[pydocstyle]
+install_from_resolve = "pydocstyle"
+requirements =["//3rdparty/lint:pydocstyle"]
+interpreter_constraints = ["==3.10.*"]
+
+[pytest]
+install_from_resolve = "pytest"
+requirements =["//3rdparty/test:pytest"]
