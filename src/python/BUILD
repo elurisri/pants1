@@ -1,4 +1,3 @@
-python_tests(
-    name="tests",
-    timeout=120,
-)
+# This program prints Hello, world!
+
+print('Hello, world!')
