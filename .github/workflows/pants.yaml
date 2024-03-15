@@ -39,7 +39,6 @@ jobs:
     - name: Install Pants
       run: | 
         curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh | bash
-        pants
     - name: Check BUILD files
       run: |
         pants tailor --check update-build-files --check ::
