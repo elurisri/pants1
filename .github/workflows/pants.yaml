@@ -41,7 +41,7 @@ jobs:
         curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh | bash
     - name: Check BUILD files
       run: |
-        pants tailor ::
+        pants fmt ::
     - name: Lint and typecheck
       run: |
         pants lint check ::
