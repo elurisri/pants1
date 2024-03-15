@@ -5,10 +5,9 @@ on:
     branches: [ main ]
 jobs:
   build:
-    name: Perform CI Checks
+    name: Perform Build
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Repository
         uses: actions/checkout@v2
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: github.com/pantsbuild/actions/tree/main/init-pants/
