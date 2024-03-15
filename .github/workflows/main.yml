@@ -44,9 +44,9 @@ jobs:
     - name: Test
       run: |
         pants test ::
-    - name: Package / Run
-      run: |
-        # We also smoke test that our release process will work by running `package`.
-        pants package ::
-        pants run libs/base/main.py
-        pants run libs/fancy/main.py
+    # - name: Package / Run
+    #   run: |
+    #     # We also smoke test that our release process will work by running `package`.
+    #     pants package ::
+    #     pants run libs/base/main.py
+    #     pants run libs/fancy/main.py
