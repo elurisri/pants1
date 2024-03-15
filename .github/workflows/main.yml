@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v3
-    - uses: pants1/actions/init-pants@main
+    - uses: actions/init-pants@main
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: github.com/pantsbuild/actions/tree/main/init-pants/
       with:
