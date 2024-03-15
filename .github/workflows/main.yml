@@ -8,7 +8,10 @@ jobs:
     name: Perform Build
     runs-on: ubuntu-20.04
     steps:
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+        with:
+          Repository : ${{ github.repository }}
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: github.com/pantsbuild/actions/tree/main/init-pants/
       with:
