@@ -41,7 +41,7 @@ jobs:
         curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh | bash
     - name: Check BUILD files
       run: |
-        pants fmt ::
+        pants tailor --check update-build-files --check ::
     - name: Lint and typecheck
       run: |
         pants lint check ::
@@ -51,14 +51,14 @@ jobs:
     - name: Count Files
       run: | 
         pants count-loc ::
-    # - name: Package / Run
-    #   run: |
-    #     # We also smoke test that our release process will work by running `package`.
-    #     pants package ::
-    #     pants run helloworld/:pex_binary
-    # - name: Upload pants log
-    #   uses: actions/upload-artifact@main
-    #   with:
-    #     name: pants-log
-    #     path: .pants.d/pants.log
-    #   if: always()  # We want the log even on failures.
+    - name: Package / Run
+      run: |
+        # We also smoke test that our release process will work by running `package`.
+        pants package ::
+        pants run helloworld/:pex_binary
+    - name: Upload pants log
+      uses: actions/upload-artifact@main
+      with:
+        name: pants-log
+        path: .pants.d/pants.log
+      if: always()  # We want the log even on failures.
