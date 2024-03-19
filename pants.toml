@@ -8,5 +8,5 @@ backend_packages = [
 
 [source]
 root_patterns = [
-  '/src/python/BUILD',
+  '/src/python/',
 ]
