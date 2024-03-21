@@ -4,6 +4,7 @@ backend_packages = [
   "pants.backend.python",
   "pants.backend.build_files.fmt.black",
   "pants.backend.python.lint.black",
+  "pants.backend.docker",
 ]
 
 [source]
